@@ -1,5 +1,5 @@
 import { JsonController, Get, Post, HttpCode, Body, Param, Put, NotFoundError } from 'routing-controllers'
-import Game from './games/board'
+import Game from './board'
 
 @JsonController()
 export default class GamesController {
