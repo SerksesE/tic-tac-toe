@@ -1,6 +1,6 @@
-import {Controller, Get} from 'routing-controllers'
+import {GamesController, Get} from 'routing-controllers'
 
-@Controller()
+@GamesController()
 export default class MainController {
 
     @Get("/hello")

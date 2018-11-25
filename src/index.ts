@@ -1,11 +1,11 @@
 import 'reflect-metadata'
 import {createKoaServer} from "routing-controllers"
-import Controller from "./controller"
+import GamesController from "./controller"
 
 const port = process.env.PORT || 4001
 
 const app = createKoaServer({
-   controllers: [Controller]
+   controllers: [GamesController]
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
