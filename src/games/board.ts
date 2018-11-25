@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
+import { defaultBoard } from './logic'
 
 @Entity()
 export default class Game extends BaseEntity {
@@ -13,6 +14,6 @@ export default class Game extends BaseEntity {
   @Column('text', {nullable:false})
   content: string
 
-  @Column('json', {nullable:false})
+  @Column('json', {start: defaultBoard})
   board: string
 }
