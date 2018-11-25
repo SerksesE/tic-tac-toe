@@ -1,11 +1,12 @@
-import { JsonController, Get, Post, HttpCode, Body, Param, Put, NotFoundError } from 'routing-controllers'
+import { JsonController, Get, Post, HttpCode, Body, Param, Put, NotFoundError, BadRequestError } from 'routing-controllers'
 import Game from './board'
+import { moves, colors } from './logic';
 
 @JsonController()
 export default class GamesController {
 
   @Get("/games")
-  allGames = async () => {
+  async allGames() {
     const games = await Game.find()
     return { games }
   }
@@ -32,8 +33,17 @@ export default class GamesController {
     @Body() update: Partial<Game>
   ) {
     const game = await Game.findOne(id)
-    if(!game) throw new NotFoundError('Game not found')
+    if (!game)
+      throw new NotFoundError('Game not found')
 
+    if (update.board) {
+      if (moves(game.board, update.board) !== 1)
+        throw new BadRequestError("Only one move allowed!")
+    }
+    if (update.color) {
+      if (!colors.includes(update.color))
+        throw new BadRequestError("Color unavailable!")
+    }
     return Game.merge(game, update).save()
   }
 }
