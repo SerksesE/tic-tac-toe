@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
-import { defaultBoard, Board } from './logic'
+import { defaultBoard, Board, colors } from './logic'
 
 @Entity()
 export default class Game extends BaseEntity {
@@ -11,7 +11,7 @@ export default class Game extends BaseEntity {
   @Column('text', {nullable:false})
   name: string
 
-  @Column('text')
+  @Column('enum', {enum: colors})
   color: string
 
   @Column('json', {default: defaultBoard})
