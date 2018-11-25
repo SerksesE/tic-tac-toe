@@ -1,7 +1,7 @@
-import {GamesController, Get} from 'routing-controllers'
+import {Controller, Get} from 'routing-controllers'
 
-@GamesController()
-export default class MainController {
+@Controller()
+export default class GamesController {
 
     @Get("/hello")
     main() {
