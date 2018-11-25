@@ -1,7 +1,7 @@
-import { Controller, Get } from 'routing-controllers'
+import { JsonController, Get } from 'routing-controllers'
 import Game from './games/board'
 
-@Controller()
+@JsonController()
 export default class GamesController {
 
   @Get("/hello")
