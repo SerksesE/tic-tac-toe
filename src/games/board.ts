@@ -9,10 +9,10 @@ export default class Game extends BaseEntity {
   id?: number
 
   @Column('text', {nullable:false})
-  title: string
+  name: string
 
-  @Column('text', {nullable:false})
-  content: string
+  @Column('text')
+  color: string
 
   @Column('json', {default: defaultBoard})
   board: Board
