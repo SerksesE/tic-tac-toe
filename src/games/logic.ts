@@ -13,6 +13,9 @@ export const defaultBoard: Board = [
 
 export const colors = ["red","blue","green","yellow","magenta"]
 
+export const colorGenerator = () => {
+  return colors[Math.floor(Math.random()* colors.length)]
+}
 
 // export const moves = (board1, board2) => 
 //   board1
